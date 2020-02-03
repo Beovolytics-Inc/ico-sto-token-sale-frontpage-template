@@ -1,0 +1,2503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+    <meta name="author" content="Kien trong" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"
+      type="text/css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/960.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/prettyPhoto.css" />
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
+    <script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // $("ul.tabs").tabs(".content_element",{
+            //     effect: 'default',
+            //     history: true
+            // });
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                theme: 'light_rounded',
+                slideshow : true
+			});
+            $('a[href=#main]').click(function(){
+                $('html, body').animate({scrollTop:0},500);
+                return false;
+            });
+
+
+            $('#sidebar').localScroll();
+            selected_child = false;
+            h5 = false
+
+            $("#sidebar ul li h5").click(function(){
+                if (h5) h5.removeClass("selected");
+                $(this).addClass("selected");
+                h5 = $(this);
+                $(".active").slideUp().removeClass("active");
+                $(this).next().slideDown().addClass("active");
+                activeli = $(this).parent();
+                return false;
+            });
+
+            $("#sidebar ul li ul li").click(function(){
+                if (selected_child) selected_child.removeClass("selected");
+                $(this).addClass("selected");
+                selected_child = $(this);
+                return false;
+            });
+
+
+            var topHeight = $('#sidebar').offset().top;
+            $(window).scroll( function() {
+            if($(document).scrollTop() > topHeight){
+                $('#sidebar').css({position: 'fixed', marginTop: -topHeight});
+            }else{
+                $('#sidebar').css({position: 'absolute', marginTop: 0});
+            }
+            });
+        });
+    </script>
+    <title>WordPress Theme Documentation</title>
+  </head>
+  <body>
+    <div id="header" class="container_12" align="">
+      <h2>Premium WordPress Theme Documentation</h2>
+      <p align="center"><img src="images/logo.png" width="220" /></p>
+      <!-- Magnium themes wrapper --> <map name="Map">
+        <area shape="rect" coords="591,6,776,41" href="http://magniumthemes.com/themes/?utm_source=documentation&amp;utm_medium=checkallouritemsbutton&amp;utm_campaign=bsoc"
+          target="_blank"
+          alt="Check all our themes" />
+        <area shape="rect" coords="398,7,584,41" href="http://google.com/+magniumthemescompany"
+          target="_blank"
+          alt="Follow us on Google+" />
+        <area shape="rect" coords="207,8,391,41" href="http://twitter.com/magniumthemes/"
+          target="_blank"
+          alt="Follow us on Twitter" />
+        <area shape="rect" coords="13,7,197,41" href="http://facebook.com/magniumthemescompany"
+          target="_blank"
+          alt="Follow us on Facebook" />
+      </map>
+      <!-- /Magnium themes wrapper -->
+      <div id="main" class="grid_12">
+        <div id="sidebar" class="grid_3 alpha" data-spy="affix" data-offset-top="200">
+          <ul class="nav tabs">
+            <li class="has-children">
+              <h5><a href="#installation">Theme installation</a></h5>
+              <ul>
+                <li><a href="#installation">Theme upload</a> </li>
+                <li> <a href="#plugins_installation">Plugins installation</a> </li>
+                <li> <a href="#oneclick_sample_data">One-Click Demo Import</a>
+                </li>
+                <li> <a href="#sample_data">Manual Demo Import</a> </li>
+                <li> <a href="#revolution_slider">Revolution Sliders import</a>
+                </li>
+                <li> <a href="#logo">Logo setup</a> </li>
+                <li> <a href="#page_builder">Page Builder configuration</a> </li>
+                <li> <a href="#homepage_setup">Homepage setup</a> </li>
+                <li> <a href="#creating_pages">Pages management</a> </li>
+                <li> <a href="#blog">Blog management</a> </li>
+              </ul>
+            </li>
+            <li class="has-children">
+              <h5><a href="#menu_management">Menu management</a></h5>
+              <ul>
+                <li> <a href="#menu_management">Menu configuration</a> </li>
+                <li> <a href="#offcanvase_menu">Offcanvas menu usage</a> </li>
+                <li> <a href="#mega_menu_management">Mega Menu usage</a> </li>
+              </ul>
+            </li>
+            <li>
+              <h5><a href="#widgets_management">Widgets management</a></h5>
+            </li>
+            <li>
+              <h5><a href="#theme_settings">Theme settings</a></h5>
+            </li>
+            <li>
+              <h5><a href="#headers">Header layouts configuration</a></h5>
+            </li>
+            <li>
+              <h5><a href="#transparent_header">Transparent header</a></h5>
+            </li>
+            <li>
+              <h5><a href="#onepage">Onepage usage</a></h5>
+            </li>
+            <li>
+              <h5><a href="#portfolio">Portfolio usage</a></h5>
+            </li>
+            <li>
+              <h5><a href="#cryptoheader">Crypto header usage</a></h5>
+            </li>
+            <li class="has-children">
+              <h5><a href="#page_builder_elements">Page Builder extra elements</a></h5>
+              <ul>
+                <li><a href="#fullwidth-sections">Fullwidth/Parallax Sections</a></li>
+                <li><a href="#mgt-header-block">Header Block</a></li>
+                <li><a href="#mgt-promo-block">Promo Block</a></li>
+                <li><a href="#mgt-flip-box">Flip Box</a></li>
+                <li><a href="#mgt-images-slider">Images Slider</a></li>
+                <li><a href="#mgt-process-block">Process Block</a></li>
+                <li><a href="#mgt-pricing-table">Pricing Table</a></li>
+                <li><a href="#mgt-item-price">Item Price</a></li>
+                <li><a href="#mgt-iconbox">Icon Box</a></li>
+                <li><a href="#mgt-post-list">Posts Slider/List</a></li>
+                <li><a href="#mgt-cta-block">Call To Action Block</a></li>
+                <li><a href="#mgt-signup-block">Signup/Subscribe Block</a></li>
+                <li><a href="#mgt-message-box">Message box</a></li>
+                <li><a href="#mgt-portfoliogrid">Portfolio Grid</a></li>
+                <li><a href="#mgt-clientreviews">Client reviews</a></li>
+                <li><a href="#mgt-counter">Counter</a></li>
+                <li><a href="#mgt-countdown">Countdown Timer</a></li>
+                <li><a href="#mgt-button">Buttons</a></li>
+                <li><a href="#mgt-timeline">Timeline</a></li>
+                <li><a href="#mgt-team">Team</a></li>
+              </ul>
+            </li>
+            <li class="has-children">
+              <h5><a href="#page_builder_elements">Page Builder crypto elements</a></h5>
+              <ul>
+                <li><a href="#mgt-priceticker">Price Ticker</a></li>
+                <li><a href="#mgt-btcprice">Bitcoin Price</a></li>
+                <li><a href="#mgt-icoprogress">ICO Progress</a></li>
+                <li><a href="#mgt-icorating">ICO Rating</a></li>
+                <li><a href="#mgt-vcw">Virtual Coin Widgets</a></li>
+              </ul>
+            </li>
+            <li>
+              <h5><a href="#gdpr">Cookie Notice (GDPR)</a></h5>
+            </li>
+            <li class="has-children">
+              <h5><a href="#translations">Languages</a></h5>
+              <ul>
+                <li> <a href="#translations">Translations</a> </li>
+                <li> <a href="#wpml">WPML Plugin (Multilanguage)</a> </li>
+              </ul>
+            </li>
+            <li>
+              <h5><a href="#child">Child theme usage</a></h5>
+            </li>
+            <li>
+              <h5><a href="#speedup">Performance and speed</a></h5>
+            </li>
+            <li>
+              <h5><a href="#retina">Retina images support</a></h5>
+            </li>
+            <li>
+              <h5><a href="#update">Support and updates</a></h5>
+            </li>
+          </ul>
+        </div>
+        <div id="content" class="grid_9 omega">
+          <div id="sources2" class="content_element">
+            <h4 class="option_title">THANK YOU FOR PURCHASE!</h4>
+            <p>You just purchased one of our best WordPress themes and we hope
+              that you will enjoy with this purchase!</p>
+            <p>To help us with theme FREE for you updates with new cool staff
+              and new features please<strong> take 1 minute to leave stars
+                rating</strong> for this theme on ThemeForest:</p>
+            <ol>
+              <li>Go to <a href="http://themeforest.net/?ref=dedalx" target="_blank">Themeforest</a>,
+                login and navigate to your account</li>
+              <li>Click <strong>Downloads</strong> link and you will see your
+                purchases list:<br />
+                <br />
+                <img src="images/rating.png" height="255" width="239" /> </li>
+              <li><strong>Click stars</strong> around our theme to leave stars
+                rating:<br />
+                <br />
+                <img src="images/set-rating.png" height="140" width="567" /> </li>
+              <li>
+                <div>
+                  <p>If you like our theme can you please kindly leave positive
+                    5 stars rating review for our theme on Themeforest? ( check
+                    how to do this <a href="http://magniumthemes.com/how-to-rate-items-on-themeforest/"
+                      rel="nofollow"
+                      target="_blank">http://magniumthemes.com/how-to-rate-items-on-themeforest/</a> ).
+                    This is very important for us!<br />
+                  </p>
+                  <div>Please do not leave negative review if you have any
+                    problems,<strong> just <a href="http://support.magniumthemes.com/"
+                        target="_blank">let
+                        us know</a> and I will help you to fix this.</strong></div>
+                </div>
+              </li>
+            </ol>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- how to start a blog -->
+          <div id="howtostartablog" class="content_element">
+            <h4 class="option_title">How to install wordpress in 5 minutes -
+              NEWBIE GUIDE</h4>
+            <p>If you newbie with WordPress, domains and hostings we recommend
+              you to read our ultimate newbie guide "<a href="http://magniumthemes.com/go/how-to-start-your-blog/"
+                target="_blank">How
+                to start your blog in 5 minutes with WordPress</a>". </p>
+            <p align="center"><a href="http://magniumthemes.com/go/how-to-start-your-blog/"
+                target="_blank"><img
+                  src="images/wp-guide-htsb.png"
+                  border="0" /></a></p>
+            <p>For many, when they think of WordPress, they think “blog.” And
+              while WordPress is one of the world’s largest blogging platforms,
+              WordPress is also a complete content management system and is a
+              great way to build many different types of websites. This article
+              will show you how easy it can be to get your blog, or website, up
+              and running quickly.</p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- // how to start a blog -->
+          <div id="free_installation" class="content_element">
+            <h4 class="option_title">FREE THEME INSTALLATION SERVICE</h4>
+            <p>You can get <strong>FREE WordPress and Theme Installation
+                service</strong> for this theme, <a href="http://magniumthemes.com/free-theme-installation-service/"
+                target="_blank">check
+                here how to apply</a>.</p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="theme_customization" class="content_element">
+            <h4 class="option_title">THEME CUSTOMIZATION SERVICES</h4>
+            <p>If you want to have <strong>additional theme features that theme
+                does not have </strong>by default or want to change theme
+              styles you can always order our theme customization services, <a
+                href="http://magniumthemes.com/service/"
+                target="_blank">check
+                services and prices here</a>.</p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="hosting" class="content_element">
+            <h4 class="option_title">Hosting RECOMENDATION</h4>
+            <p>We recommend you to use <a href="http://magniumthemes.com/go/bluehost/"
+                target="_blank">Bluehost</a>
+              hosting to host your sites based on our themes. </p>
+            <p><a href="http://magniumthemes.com/go/bluehost/" target="_blank">Bluehost</a>
+              WordPress hosting is one of the most popular WordPress hosting
+              trusted by millions of customers all over the world. Founded in
+              1996, it is reputable and serving for more than 850,000 WordPress
+              websites. Besides, there are many blogs and websites recommend
+              BlueHost WordPress hosting. However, is it really trusted? The
+              answer is definitely YES.</p>
+            <p>Our company used <a href="http://magniumthemes.com/go/bluehost/"
+                target="_blank">Bluehost</a>
+              for building sites for our clients for years, this is why we can
+              recommend this beautiful hosting for everyone. Bluehost provide
+              excellent customer support, live chat, and reliability, that every
+              serious product needs. This is “All in one” <strong>Unlimited</strong>
+              CPanel hosting for very cheap price.</p>
+            <p>When choosing a right web hosting solution, it’s not the cheaper
+              the better, but the more cost effective the better. BlueHost
+              WordPress is very cost effective. It is starting at <strong>$2.64/mo</strong>,
+              50% off the regular price $6.95/mo for customers going through <a
+                href="http://magniumthemes.com/go/bluehost/"
+                target="_blank"
+                rel="nofollow">this
+                exclusive promotional link</a>.</p>
+            <p>For the cheap price, BlueHost WordPress hosting also includes a
+              series free features such as 1 free domain name, free site
+              builder, 1000+ free templates &amp; themes, and $100 Google
+              AdWords credits. Besides, it also comes with advanced features as
+              the following list. </p>
+            <ul>
+              <li><strong>UNLIMITED</strong> Domains &amp; Websites Hosting</li>
+              <li><strong>UNLIMITED</strong> Disk Space &amp; Bandwidth</li>
+              <li><strong>UNLIMITED</strong> Email Accounts &amp; FTP Accounts</li>
+              <li><strong>1 Free Domain Name</strong></li>
+              <li>Secure Shell, SSL, FTP, Stats</li>
+              <li>CGI, Ruby (RoR), Perl, PHP, MySQL</li>
+              <li><strong>$100 Google Advertising Offer</strong></li>
+              <li>24/7 Phone, Chat &amp; Email Support</li>
+              <li><a href="http://magniumthemes.com/free-theme-installation-service/"
+                  target="_blank">Free
+                  Theme Installation service</a> from us<strong> ($100 value
+                  bonus)</strong></li>
+              <li><strong>Moneyback within month</strong></li>
+            </ul>
+            <p>Among the hundreds of web hosts we have reviewed, it’s really
+              hard to find one which can offer more features than BlueHost.
+              Taking the price and features into consideration, BlueHost
+              WordPress hosting is the best cheap WordPress hosting.</p>
+            <p><strong>Still thinking?</strong> Check <a href="http://magniumthemes.com/hosting/"
+                target="_blank">5
+                Reasons To Choose BlueHost For WordPress Hosting</a> article on
+              our website.</p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="installation" class="content_element">
+            <h4 class="option_title">Installation</h4>
+            <p>If you don't want to install theme yourself you can always <a href="http://magniumthemes.com/services/"
+                target="_blank">order
+                our WordPress and Theme installation service.</a></p>
+            <p align="center"><strong>You can <a href="#logo">skip few basic
+                  installation steps</a> in this guide <br />
+                if you watch and follow our Installation video guide
+                below</strong>:</p>
+            <p align="center"> <iframe src="https://www.youtube.com/embed/zrztZoB0z80"
+                allowfullscreen=""
+                height="415"
+                frameborder="0"
+                width="100%"></iframe>
+            </p>
+            <p align="center"><strong>If you don't watched video follow manual
+                steps:</strong></p>
+            <p>Unzip the file that you download after purchase. The following
+              files and folders will be in the unzipped file:</p>
+            <ul>
+              <li><strong>cryptibit.zip</strong> (Packed theme file for install)</li>
+              <li><strong><strong>cryptibit</strong> </strong>folder - theme
+                for manual FTP upload</li>
+              <li><strong>Documentation/index.html</strong> (This file)</li>
+              <li><strong>Documentation/release-history.html </strong>- Update
+                instructions for theme updates</li>
+            </ul>
+            <p><strong>The theme can be uploaded in two ways:</strong></p>
+            <ul>
+              <li>FTP upload: Using your FTP program, upload the non-zipped <strong>cryptibit</strong><strong>
+                </strong>folder into the <b>/wp-content/themes/</b> folder on
+                your server.</li>
+              <li>WordPress upload: Navigate to <b>Appearance &gt; Install
+                  Themes &gt; Upload</b>. Go to browse, and select the zipped <b><strong><strong>cryptibit</strong></strong>.zip</b>
+                file. Hit Install Now and the theme will be uploaded and
+                installed.</li>
+            </ul>
+            <p>Once the theme is uploaded, you need to <strong>activate</strong>
+              it. Go to <b>Appearance &gt; Themes</b> and activate <strong>CryptiBIT</strong>
+              theme.</p>
+            <p>If you need help installing WordPress see the link here : <a href="http://codex.wordpress.org/Installing_WordPress"
+                target="_blank">http://codex.wordpress.org/Installing_WordPress</a></p>
+            <p class="note"> After the install finish, go to <strong>Theme
+                Control Panel </strong>page, then click <strong>Save</strong>
+              button to import default settings values to database. You don't
+              need to do this if you use 1-Click Demo import feature.</p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="plugins_installation" class="content_element">
+            <h4 class="option_title">PLUGINS INSTALLATION</h4>
+            <p>After you Activate this theme you will see message in WordPress
+              dashboard that you must install required plugins and can install
+              recommended plugins. Don't worry - all plugins included with theme
+              and you don't need to download or purchase something.</p>
+            <p><img src="images/plugins-message.png" alt="" /></p>
+            <ol>
+              <li>Click <strong>Begin installing plugins</strong> in this
+                message</li>
+              <li>You <strong>must check all required plugins</strong> and <strong>can
+                  check recommended plugins</strong> (we recommend it to use,
+                but theme will work without this plugins too):<br />
+                <br />
+                <img src="images/install-plugins.png" alt="" /></li>
+              <li>Select <strong>Install</strong> in dropdown <strong>Bulk
+                  Actions</strong> menu and click <strong>Apply.</strong></li>
+              <li>Select <strong>Activate</strong> in dropdown <strong>Bulk
+                  Actions</strong> menu and click <strong>Apply.</strong></li>
+              <li>You should get <strong>All installations have been completed</strong>
+                message with installed Plugins table below it</li>
+            </ol>
+            <p>This theme has include 1-click demo data import feature. This
+              sample data contains menus, sample pages, posts and placeholder
+              images. Your site will looks exactly as our demo site if you
+              import sample demo data. We are <strong>strongly recommend</strong>
+              you to import Dummy Data first time when you use our theme first
+              time.</p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="oneclick_sample_data" class="content_element">
+            <h4 class="option_title">ONE CLICK DEMO DATA IMPORT:</h4>
+            <p><strong>You can import all theme demo content with one click</strong>
+              (posts, pages, products, categories, menus, sample placeholder
+              images, sliders, plugins configurations).</p>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Import Demo Data</strong></li>
+              <li>Click <strong>Import Demo Data</strong> button and wait until
+                import process will be finished </li>
+            </ol>
+            <p><a href="https://magniumthemes.ticksy.com/article/4700/" target="_blank">Check
+                this article</a> how to solve demo data import problems.<br />
+              <br />
+              Please note that theme data <strong>does not have real images</strong>
+              from our demo, all demo images will be replaced with sample
+              placeholder images (you don't have legal rights to use real
+              images, because you don't purchased it). You need to change demo
+              images to your own real images.<br />
+            </p>
+            <span class="important">If you don't imported dummy data you must
+              create theme pages and menus manually.</span>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="sample_data" class="content_element">
+            <h4 class="option_title">MANUAL DEMO DATA IMPORT (NOT RECOMMENDED):</h4>
+            <p><strong>We does not recommend to use manual XML import.</strong>
+              Use this only if you can't import demo data correctly with 1-Click
+              demo data import for some reason (does not related to hosting
+              PHP.ini limits settings - manual import require <strong>much
+                higher</strong> PHP.ini limits).<strong><br />
+              </strong></p>
+            <p><img src="images/st_import2.png" alt="" /></p>
+            <ol>
+              <li>Go to <strong>Tools &gt; Import &gt; WordPress</strong>. If
+                you don't installed WP Importer plugin before you will be asked
+                to install it.</li>
+              <li><strong>Select content.xml demo file</strong> from<strong>
+                  /wp-content/plugins/cryptibit-theme-addons/inc/oneclick-demo-import/demo-files/1/
+                  </strong> folder (you need to download this folder files from
+                your FTP first, after theme plugins installation).</li>
+              <li>Submit <strong>Upload file and import</strong>.</li>
+              <li><strong>Assign posts author</strong> to an existing user
+                account.</li>
+              <li>You can check to <strong>Download and import file attachments</strong>
+                checkbox to import all sample images. <br />
+                <br />
+                Please not that this option require good server with a lot of
+                server memory and CPU available.<strong> If you have cheap
+                  shared hosting don't check this option</strong>. Importing all
+                images will take 10 minutes or more (WordPress will download
+                &amp; generate around 30 MB of test images), depending on your
+                server hardware. <br />
+                <br />
+                We recommend you to import sample images on<strong> local test
+                  servers </strong>without low memory/time limitation on your
+                PC/Mac (We recommend to use <a href="http://www.mamp.info/en/"
+                  target="_blank">MAMP</a>).
+                You need to set large values for PHP time limit (1 hour or more)
+                and PHP memory limit (256MB or more) in php.ini configuration
+                file on your server before you start importing images.</li>
+              <li><strong>Submit</strong> and wait when WP tools download data
+                and attachments to your WordPress site.</li>
+              <li><strong>If you don't see Success message after import</strong>
+                or your page just stop loading with or without any error, and
+                your site does not look like our demo this mean your server
+                configuration does not have enougth scripts time limit and
+                memory limit to import all sample data. You should contact your
+                hosting/server provider and ask to increase PHP memory limit and
+                time limits.<br />
+                <br />
+                <a href="https://magniumthemes.ticksy.com/article/4700/" target="_blank">Check
+                  this article</a> how to solve demo data import problems.<br />
+                <br />
+                <strong>Please note that you does not have legal rights to use
+                  any photos and images imported</strong> with manual XML
+                import, this images used for demo purposes only. You must change
+                demo images to your own real images.<br />
+              </li>
+            </ol>
+            <p>Additionally you can <strong>import sample widgets</strong>
+              (sidebars) from our demo:</p>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Widgets </strong>and delete
+                all default WordPress widgets from all theme sidebars.</li>
+              <li><strong>Install and activate</strong> <a href="https://wordpress.org/plugins/widget-importer-exporter/"
+                  target="_blank">Widget
+                  Importer &amp; Exporter</a> plugin.</li>
+              <li>Go to <strong>Tools &gt; Widget Importer &amp; Exporter</strong>.</li>
+              <li>Click <strong>Browse...</strong> button and select<strong>
+                  widgets.json </strong>file from <strong>/wp-content/plugins/cryptibit-theme-addons/inc/oneclick-demo-import/demo-files/1/
+                  </strong> folder (you need to download this folder files from
+                your FTP first, after theme plugins installation).</li>
+              <li>Click <strong>Import Widgets</strong> button.</li>
+              <li>Now you can go to <strong>Appearance &gt; Widgets</strong>
+                and reconfigure sample widgets in all sidebars to your purposes.</li>
+            </ol>
+            <span class="important">If you don't imported dummy data you must
+              create theme pages and menus manually.</span>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="revolution_slider" class="content_element">
+            <h4 class="option_title">REVOLUTION SLIDER</h4>
+            <p>Revolution slider is very powerful slider with different
+              animations, effects and more, you can read about this slider on
+              its <a href="http://www.themepunch.com/codecanyon/revolution_wp/"
+                target="_blank">official
+                website</a>.</p>
+            <p><strong>Please note:</strong> We do not develop Revolution slider
+              and don't provide any support about usage, setup or configuration
+              of this slider plugin. You can get Slider support at <a href="http://themepunch.ticksy.com/"
+                target="_blank">ThemePunch
+                support website</a>.</p>
+            <p>This theme include a lot of different demo sliders used on
+              different demo homepages. All sliders automatically import within
+              1-Click Demo data import. Demo sliders <strong>does not have real
+                images</strong> from demo website (you will have solid
+              background). If you want to import sliders manually for some
+              reason follow this steps: </p>
+            <ol>
+              <li>Go to <strong>Revolution Slider</strong> section in left
+                WordPress admin panel menu</li>
+              <li>Use <strong>Import Slider</strong> button:<br />
+                <br />
+                <img src="images/rev_slider_import.png" alt="" height="429" width="719" /></li>
+              <li>Click <strong>Browse</strong> and select some slider ZIP file
+                from <strong>/wp-content/plugins/cryptpico-theme-addons/inc/oneclick-demo-import/demo-files/1/revslider/
+                  </strong> folder (you need to download this folder files from
+                your FTP first, after theme plugins installation).</li>
+              <li>Click <strong>Import Slider</strong>.</li>
+              <li>You will see <strong>Imported Slider</strong> in your sliders
+                list and now you can use it anywhere in theme (just use
+                Revolution Slider element from our Visual Page Builder elements
+                list when you want to insert slider to page, post or product).</li>
+              <li>You can import all other demo sliders from folder by the same
+                way.<br />
+              </li>
+            </ol>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="logo" class="content_element">
+            <h4 class="option_title">Logo SETUP</h4>
+            <p>To add your logo to theme follow steps below.</p>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Header</strong> or <strong>Appearance
+                  &gt; Customize.</strong></li>
+              <li>If you want to show <strong>Retina logo</strong> (high
+                resolution logo for retina devices like iPhone, iPad, MacBook
+                Retina, etc) you need to prepare your logo 2x size larger that
+                original. For example if you want to see logo with 200px width
+                on your site you should make your logo 400px width.</li>
+              <li>Click <strong>Add new image</strong> and <strong>Select your
+                  logo image</strong> and click <strong>Save</strong>.<br />
+                <br />
+                <img src="images/change-logo.png" alt="" style="width: 317px; height: 700px;" />
+              </li>
+              <li><strong>Upload light version of your logo</strong> (white) as
+                "Logo for Transparent Header", it will be used with transparent
+                header. Image should be the same size and dimensions as your
+                regular logo.</li>
+              <li>You can <strong>crop</strong> logo image if you want.</li>
+              <li>To <strong>Enable retina support </strong>(if you uploaded
+                retina size logo) go to <strong>Theme Control Panel &gt; Header</strong>
+                and input your <strong>regular logo width</strong>:<br />
+                <br />
+                <img src="images/retina_logo.png" alt="" /> <br />
+                <br />
+                If you have big logo you can adjust <strong>Header height</strong>
+                value too. </li>
+              <li>Click <strong>Save Settings.</strong></li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="page_builder" class="content_element">
+            <h4 class="option_title">Page Builder CONFIGURATION AND Overview</h4>
+            <p>WordPress has evolved into a fully functional CMS. Page Builder
+              completes the transition by giving you a way to create responsive
+              column layouts using the widgets you know and love.</p>
+            <p>This themes comes with Visual Page Builder with a lot of page
+              builder items and our special MGT items created especialy for this
+              theme, you will have the flexible to display your content to the
+              page.</p>
+            <p><strong>Our Visual Page Builder allow you to edit pages directly
+                on frontend!</strong></p>
+            <p>All demo site pages was created in Page Builder provided with
+              theme.</p>
+            <p>Please refer to page builder video tutorials and import sample
+              data to understand how it works.</p>
+            <p>Visual page builder have a lot of features, we recommend you to
+              read full <a href="https://kb.wpbakery.com/" target="_blank">Page
+                Builder Documentation guide here</a>.<br />
+              <br />
+            </p>
+            <h4>PAGE builder CONFIGURATION:</h4>
+            <ol>
+              <li>Go to<strong> WPBakery Page Builder &gt; Role Manager</strong></li>
+              <li>Check <strong>selected Post types</strong> as you see on
+                image below for your <strong>administrator</strong> and other
+                user rules where you will use page builder:<br />
+                <br />
+                <img src="images/composer_config.png" /></li>
+              <li>Click<strong> Save changes</strong></li>
+            </ol>
+            <h4>USING PAGE builder:</h4>
+            <ol>
+              <li><strong>Add/Edit page, product, portfolio element or post. <br />
+                </strong><br />
+                <strong>IMPORTANT: </strong>If you use Gutenberg editor and
+                does not want to disable it (you can disable it <a href="https://wordpress.org/plugins/classic-editor/"
+                  target="_blank">with
+                  this official plugin</a> for WordPress 5 and later) you need
+                to click <strong>Pages &gt; All pages</strong>, and then <strong>Add
+                  new &gt; Classic editor </strong>or edit page with <strong>Classic
+                  editor</strong> link near page name in list, otherwise
+                Gutenberg editor will replace WPBakery Page builder.</li>
+              <li>Click <strong>Backend editor</strong> button near to content
+                area to switch editor to Page Builder<br />
+                <br />
+                <a href="images/page-builder.png" rel="prettyPhoto"><img src="images/page-builder.png"
+                    alt=""
+                    height="180"
+                    width="362" /></a><br />
+                <br />
+                or click <strong>Frontend editor</strong> to edit your page
+                directly on your frontend! </li>
+            </ol>
+            <ol>
+              <li>To add some new Page Builder element click <strong>+ Add
+                  Element </strong>button<br />
+                <br />
+                <a href="images/page-builder-2.png" rel="prettyPhoto"><img src="images/page-builder-2.png"
+                    alt=""
+                    height="532"
+                    width="555" /></a>
+              </li>
+              <li><strong>Select element</strong> that you want to add and
+                select its options<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/page-builder-3.png"
+                  rel="prettyPhoto"><br />
+                </a> <br />
+                You can read about<strong> <a href="#page_builder">special
+                    theme elements</a></strong> in current documentation.</li>
+              <li> You will see that element was added to your visual content
+                editor. You can move, edit or delete them.</li>
+              <li>WPBakery page builder have a lot of features, we recommend you
+                to read full <a href="https://kb.wpbakery.com/" target="_blank">Page
+                  Builder Documentation guide here</a>.</li>
+              <li>For any questions about Page Builder you can use <a href="https://support.wpbakery.com/"
+                  target="_blank">WP
+                  Bakery support forums</a>. <br />
+                <br />
+                We don't develop Page Builder plugin and <strong>does not
+                  provide any support about it usage</strong>. </li>
+            </ol>
+            <h4>SPECIAL CSS CLASS NAMES FOR PAGE BUILDER CONTENT</h4>
+            <p>You can use special predefined CSS class names inside WPBakery
+              Page Builder elements settings in "Class name" field, or in HTML
+              code for content directly.</p>
+            <p><strong>Change text-transform</strong>:</p>
+            <p>.text-transform-uppercase<br />
+              .text-transform-none </p>
+            <p><strong>Change font-weight</strong>:</p>
+            <p>.text-font-weight-normal<br />
+              .text-font-weight-bold<br />
+              .text-font-weight-100<br />
+              .text-font-weight-200<br />
+              .text-font-weight-300<br />
+              .text-font-weight-400<br />
+              .text-font-weight-500<br />
+              .text-font-weight-600<br />
+              .text-font-weight-700<br />
+              .text-font-weight-800<br />
+              .text-font-weight-900</p>
+            <p><strong>Change text color</strong>:</p>
+            <p>.text-color-white,<br />
+              .text-color-white<br />
+              .text-color-black<br />
+              .text-color-theme</p>
+            <p><strong>Change text size</strong>:</p>
+            <p>.text-size-large<br />
+              .text-size-medium</p>
+            <p><strong>Responsive styles to remove elements padding (rows,
+                columns, etc) on mobile only (&lt;767px width):</strong></p>
+            <p>.mobile-padding-none <br />
+              .mobile-padding-x-none<br />
+              .mobile-padding-y-none<br />
+              .mobile-padding-left-none  <br />
+              .mobile-padding-right-none<br />
+              .mobile-padding-top-none <br />
+              .mobile-padding-bottom-none</p>
+            <p><strong>Responsive styles to remove elements margins (rows,
+                columns, etc) on mobile only</strong><strong><strong> (&lt;767px
+                  width)</strong>:</strong> </p>
+            <p>.mobile-margin-none <br />
+              .mobile-margin-x-none<br />
+              .mobile-margin-y-none<br />
+              .mobile-margin-left-none  <br />
+              .mobile-margin-right-none<br />
+              .mobile-margin-top-none <br />
+              .mobile-margin-bottom-none</p>
+            <p><strong>Add special effect on mouse hover to images (&lt;IMG&gt;
+                tags) inside parrent element (usually you need to add this
+                classes to VC Row with images or image gallery inside):</strong></p>
+            <p>.effect-hover-img-color - <em>make image greyscale by default
+                and show real colors on hover</em><br />
+              .effect-hover-img-grayscale - <em>make image in greyscale colors
+                on hover</em><br />
+              .effect-hover-img-opacity <em>- make image semiopacity and remove
+                opacity on hover</em><br />
+              .effect-hover-img-opacity-invert - <em> make image semiopacity on
+                hover</em></p>
+            <p><strong>Example of usage for WPBakery Page Builder Row with
+                images slider inside:</strong><br />
+              <br />
+              <a href="images/page-builder-3.png" rel="prettyPhoto"><img src="images/vc-row-css.png"
+                  alt="" /></a>
+            </p>
+            <p>You can combine classes to add multiple effects.<br />
+            </p>
+          </div>
+          <div id="homepage_setup" class="content_element">
+            <h4 class="option_title">HOMEPAGE SETUP </h4>
+            <p><strong>You don't need to create Homepage and Blog pages if you
+                used 1-Click Demo Data import feature or imported theme demo
+                content manually.</strong></p>
+            <p>First of all you need to create required pages and select it for
+              frontpage display:</p>
+            <ol>
+              <li>Go to <strong>Pages &gt; Add New</strong></li>
+              <li>Input some page name, for example <strong>Home</strong> (we
+                will fill it some steps later)</li>
+              <li>Check <strong>Don't display this page title</strong> option,
+                because we don't need to see Homepage title. <br />
+                <br />
+              </li>
+              <p><a href="images/homepage-setup-0.png" rel="prettyPhoto"><img src="images/homepage-setup-0.png"
+                    alt=""
+                    height="274"
+                    width="533" /></a></p>
+              <li><strong>Publish</strong> homepage page</li>
+              <li>Go to <strong>Pages &gt; Add New</strong></li>
+              <li>Input some page name for blog, for example <strong>Blog</strong>
+                and <strong>Publish it</strong><br />
+              </li>
+              <li>Go to <strong>Settings &gt; Reading</strong></li>
+              <li>Choose <strong>Front page displays</strong> option <strong>"A
+                  static page"</strong>, select <strong>Home</strong> page that
+                you just created for <strong>Front page</strong> option and <strong>Blog</strong>
+                page for<strong> Posts page</strong> option:<br />
+                <br />
+                <a href="images/reading-settings.png" rel="prettyPhoto"><img src="images/reading-settings.png"
+                    alt="" /></a>
+              </li>
+              <li>Click <strong>Save settings</strong></li>
+            </ol>
+            <p>Now you can create content of your Homepage. You can skip this
+              step and read next documentation section "<a href="#menu_management">menu
+                management</a>" if you imported sample data, because you already
+              will have demo homepage as on our demo site.</p>
+            <p>You can add different blocks for homepage with our predefined
+              styles to made your homepage looks similar to our demo site or
+              create homepage as you want in Page Builder (all content on our
+              demo site created with it). </p>
+            <h4>CREATING YOUR HOMEPAGE CONTENT </h4>
+            <p>We strongly recommend you to import demo content first time when
+              you use our theme to check all theme features and all Page Builder
+              elements and understand how it works.</p>
+            <p>If you don't imported demo data you will need to add <a href="#page_builder">Page
+                Builder elements</a> to your homepage yourself. You can use Page
+              Builder elements and our special theme Page Builder elements
+              (Magnium groups in Page Builder elements groups). </p>
+            <p>You can read about our special elements in current documentation
+              <a href="#page_builder">here</a>. You can read about Default Page
+              builder elements usage in <a href="https://kb.wpbakery.com/" target="_blank">Page
+                Builder documentation here</a>.<br />
+            </p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="creating_pages" class="content_element">
+            <h4 class="option_title"> pages MANAGEMENT</h4>
+            <ol>
+              <li>Go to <strong>Pages &gt; Add new</strong>.</li>
+              <li>Input some <strong>page title</strong>. Page title will be
+                show on Onepage template before page content.</li>
+              <li>Add page content using Visual Page Builder</li>
+              <li>You can Input page class if you want to add some CSS styles
+                only for this page.</li>
+              <li>Change<strong> page settings:</strong><br />
+                <br />
+                <ul>
+                  <li> <strong> <label for="page_stick_footer">Stick page
+                        content to footer</label> </strong> - Enable if you
+                    want to have last page element sticked to footer without
+                    margins.</li>
+                  <li><strong>Show transparent header </strong>- Use this if
+                    you have fullwidth image or slider at the page start (header
+                    will be displayed above your image).</li>
+                  <li><strong>Page sidebar position</strong> - you can specify
+                    widgets sidebar position for this current page (every page
+                    can have different settings here).</li>
+                  <li><strong>Don't display this page title (only show page
+                      content)</strong> - disable title display on page</li>
+                  <li><strong>Page title background image and color</strong> -
+                    you can specify page title background image and color here.</li>
+                </ul>
+              </li>
+              <li><strong>Publish</strong> page.</li>
+              <li>Go to <strong>Appearance &gt; Menus</strong> and add created
+                page to menu. <br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- / content_element -->
+          <div id="blog" class="content_element">
+            <h4 class="option_title">BLOG MANAGEMENT</h4>
+            <p>You created blog page before (in Installation step) and added it
+              to your post display page in Reading settings.</p>
+            <p>If you added Blog page to menu it will displayed in site menu and
+              will open blog page with posts.</p>
+            <p>You can manage blog posts and categories as in any WordPress
+              theme. You can use post thumbnails too.</p>
+            <p>Our theme support <strong>different post formats</strong>:<br />
+              <br />
+              <img src="images/post-formats.png" height="335" width="287" /> </p>
+            <p>You can select post format when you create post.</p>
+            <p>You can select different sidebar position for posts in <strong>Post
+                settings</strong>.</p>
+            <p>You can change blog layout settings in <strong>Appearance &gt;
+                Theme Control Panel &gt; Blog.</strong></p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="menu_management" class="content_element">
+            <h4 class="option_title">MENU MANAGEMENT</h4>
+            <p>This theme have top menu, main menu, footer menu and offcanvas
+              widgets sidebar that can be used as additional menu. Main menu can
+              have different layouts and support MegaMenu features.<br />
+            </p>
+            <p><strong>1. Top menu:</strong><br />
+              <br />
+              <img src="images/menu-top-menu.png" alt="" /><br />
+              <br />
+              <strong>2. Main menu</strong> (several variations depending on
+              theme settings). You can change Main menu settings in <strong>Appearance
+                &gt; Theme Control Panel &gt; Header, Logos, Menus.</strong></p>
+            <p>2.1. Main Menu position = Menu Below Header<br />
+              <br />
+              <img src="images/menu-main-menu.png" alt="" /></p>
+            <p>2.2. Main Menu position = Menu in Header<br />
+              <br />
+              <img src="images/menu-main-menu-2.jpg" alt="" /><br />
+              <br />
+              <strong>3. Footer menu:</strong> <br />
+              <br />
+              <img src="images/menu-footer-menu.png" alt="" /> </p>
+            <p><strong>4. Offcanvas sidebar menu </strong>- items set in <strong>Appearance
+                &gt; Widgets &gt; Offcanvas right sidebar</strong>. You can
+              enable this menu in <strong>Appearance &gt; Theme Control Panel
+                &gt; Header, Logo, Menus &gt; Header advanced menu</strong><br />
+              <br />
+              <img src="images/menu-offcanvas-menu.jpg" alt="" /></p>
+            <p><strong>5. Fullscreen menu</strong> - items set in <strong>Appearance
+                &gt; Menus &gt; Header advanced menu</strong>. You can enable
+              this menu in <strong>Appearance &gt; Theme Control Panel &gt;
+                Header, Logo, Menus &gt; Header Advanced Menu</strong><br />
+              <br />
+              <img src="images/menu-main-menu-4.png" alt="" /></p>
+            <p>6. <strong>Left side header menu (Light and Dark) </strong>-
+              items set in <strong>Appearance &gt; Menus &gt; Main Menu</strong>.
+              You can enable left side header in <strong>Appearance &gt; Theme
+                Control Panel &gt; Header, Logo, Menu</strong>s<br />
+              <br />
+              <img src="images/header-left-side-2.jpg" alt="" /><br />
+            </p>
+            <p></p>
+            <p> You need to set Menus Locations <strong>(you don't need to do
+                this if you used One-Click demo data import feature)</strong>:</p>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Menus</strong>.</li>
+              <li>Open <strong>Manage Locations</strong> tab.</li>
+              <li>Select menu "<strong>Main Menu</strong>" for Main menu, <strong>"Top
+                  Menu"</strong> for Top Menu and "<strong>Footer Menu"</strong>
+                for Footer Menu.<br />
+                <br />
+                <a href="images/manage-menus.png" rel="prettyPhoto"><img src="images/manage-menus.png"
+                    alt="" /></a><br />
+                <br />
+                If you don't have<strong> some </strong>menus you need to <strong>create
+                  it first</strong> and add your elements.</li>
+              <li><strong>Save changes</strong>.</li>
+            </ol>
+            <h4>Managing WOOCOMMERCE categories menu </h4>
+            <ol>
+              <li><strong>Add WooCommerce categories</strong> to you <strong>Categories</strong>
+                menu, add some page links to it if you want (for example Contact
+                us page or blog page)<br />
+                <br />
+                <strong>If you don't see WooCommerce categories</strong>
+                elements to add it to menu you should enable it in <strong>Screen
+                  Options </strong>at the top of page: <br />
+                <br />
+                <a href="images/screen-options.png" rel="prettyPhoto"><img src="images/screen-options.png"
+                    alt="" /></a><br />
+              </li>
+              <li>Click <strong>Save Menu</strong> </li>
+            </ol>
+            <h4>SPECIAL CSS CLASS NAMES FOR MENU ITEMS</h4>
+            <p>You can use special predefined CSS class names for main manu
+              items to change its look.<br />
+              <br />
+              <img src="images/menu-main-menu-2.jpg" alt="" /> </p>
+            <p>You can use this special CSS classes:</p>
+            <ol>
+              <li><strong>pull-right </strong>- use this to move your element
+                to right side of main menu (this class work only for menu below
+                header).</li>
+              <li><strong>mgt-animated -</strong> use this to add hover
+                animation for menu element (this class work only for menu below
+                header).</li>
+              <li> <strong>mgt-highlight</strong> - use this to add theme color
+                background to this menu element (this class works for menu below
+                header and menu in header).<br />
+                <br />
+                Additionally you can use another class in menu in header to make
+                your button looks bordered instead of full background -<strong>
+                  mgt-highlight-bordered</strong>. This class work only in menu
+                in header, and you can use it instead of <strong>mgt-highlight</strong>
+                class (not together).<br />
+                <br />
+                Also you can use another class in menu in header to make your
+                button looks rounded instead of squared -<strong>
+                  mgt-highlight-rounded-small</strong>, <strong>mgt-highlight-rounded-full</strong>.
+                This class work only in menu in header, and you can use it
+                instead of <strong>mgt-highlight</strong> class (not together).</li>
+            </ol>
+            <p>To add CSS class to menu item:</p>
+            <ol>
+              <li>Go to<strong> Appearance &gt;Menus</strong>.</li>
+              <li>Click <strong>Screen options </strong>at the top right
+                corner of page and enable<strong> CSS Classes field </strong>display:<br />
+                <a href="images/screen-options.png" rel="prettyPhoto"><img src="images/menu-css-classes.png"
+                    alt="" /></a></li>
+              <li><strong>Add predefined CSS class(es) </strong>space separated
+                to your menu item: <br />
+                <br />
+                <a href="images/screen-options.png" rel="prettyPhoto"><img src="images/menu-css-classes-3.png"
+                    alt="" /></a>
+              </li>
+              <li><strong>Save</strong> menu.</li>
+            </ol>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="offcanvase_menu" class="content_element">
+            <h4 class="option_title">Offcanvas menu</h4>
+            <p>Our theme have special right side<strong> offcanvas menu </strong>that
+              you can open by clicking small menu button in header:<br />
+            </p>
+            <p><a href="images/offcanvas-menu.png" rel="prettyPhoto"><img src="images/menu-offcanvas-menu.jpg"
+                  alt="" /></a>
+            </p>
+            <p>This is special sidebar where you can add any menus, widgets or
+              any other content in additional to your regular menus.<br />
+            </p>
+            <h4>HOW TO USE OFFCANVAS MENU</h4>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Widgets </strong>and add
+                Widgets to <strong>Offcanvas Right Sidebar:</strong><br />
+                <br />
+                <a href="images/offcanvas-menu-3.png" rel="prettyPhoto"><img src="images/offcanvas-menu-3.png"
+                    alt=""
+                    height="496"
+                    width="326" /></a><br />
+              </li>
+              <li>Go to <strong>Appearance &gt; Theme Control Panel &gt; Header
+                </strong>and enable <strong>Enable right side offcanvas
+                  floating sidebar menu</strong> option.</li>
+              <li><strong>Save</strong> <strong>settings</strong>.<br />
+              </li>
+            </ol>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mega_menu_management" class="content_element">
+            <h4 class="option_title">MEGA MENU management</h4>
+            <p>We developed our own Mega Menu functionality especially for this
+              theme.</p>
+            <p>This is awesome responsive meage menu. Features: icons, sticky,
+              mega dropdowns variations, fully customizable. You can place any
+              content in dropdowns: links, text, images, widgets and shortcodes.
+            </p>
+            <p>You need to activate Mega Menu features in <strong>Appearance
+                &gt; Theme Control Panel &gt; MegaMenu &gt; Enable Mega Menu.</strong></p>
+            <p>Now you can go to <strong>Appearance &gt; Menus</strong> and use
+              Mega Menu features in your regular menu items:</p>
+            <p><a href="images/megamenu_settings.png" rel="prettyPhoto"><img src="images/megamenu_settings.png"
+                  alt="" /></a></p>
+            <p>If you imported demo data you can setup Mega Menu Layouts for
+              demo data menu items, because it does not have this settings by
+              default after import.</p>
+            <p>You can create more sidebars for Mega Menu in <strong>Appearance
+                &gt; Theme Control Panel &gt; Mega Menu.</strong></p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="widgets_management" class="content_element">
+            <h4 class="option_title">WIDGETS MANAGEMENT</h4>
+            <p>This theme have <strong>8 widgets sidebars </strong>and<strong>
+                unlimited megamenu sidebars </strong>where you can add widgets:</p>
+            <ul>
+              <li>Posts sidebar (Right or Left)</li>
+              <li>Pages sidebar (Right or Left)</li>
+              <li>WooCommerce Shop sidebar (Right or Left)</li>
+              <li>Portfolio page sidebar (Right or Left)</li>
+              <li>Footer sidebar with 4 columns</li>
+              <li>Bottom sidebar with 4 columns</li>
+              <li>Offcanvas right sidebar (can be opened with header switcher
+                button)</li>
+              <li>Header Left Sidebar (for left side header style)</li>
+            </ul>
+            You can configure sidebar position (or disable it) for pages and
+            posts independently in every page/post settings or apply global
+            settings in <strong>Appearance &gt; Theme Control Panel &gt;
+              Sidebars</strong>.<br />
+            <p> <strong>After theme installation all WordPress widgets will be
+                enabled (if you have WP fresh installation) so you need to turn
+                off widgets that you don't want to see:</strong></p>
+            <ol>
+              <li>Go to<strong> Appearance &gt; Widgets</strong>.</li>
+              <li>Move widgets <strong>from left "Available Widgets" </strong>block<strong>
+                  to right sidebar</strong> that you want to use to <strong>add</strong>
+                it to display in theme.</li>
+              <li>Move widgets <strong>from right sidebars</strong> block to<strong>
+                  left "Available Widgets" </strong>block to <strong>remove</strong>
+                it from display in theme.<br />
+                <br />
+                <a href="images/theme-widgets-config.png" rel="prettyPhoto"><img
+                    src="images/theme-widgets-config.png"
+                    alt="" /></a></li>
+            </ol>
+            <h4>Special theme widgets</h4>
+            <p>Our theme have special widgets that you can use in additional to
+              default WordPress widgets.</p>
+            <p><strong>Files list (brochures) widget</strong>:</p>
+            <p><img src="images/widgets-files.png" alt="" style="width: 291px; height: 171px;" /></p>
+            <p>To use this widget add default WordPress <strong>Text Widget </strong>to
+              your sidebar and use this predefined HTML layout:</p>
+            <div class="code"> &lt;div class="widget-download-link-wrapper"&gt;<br />
+              &lt;div class="widget-download-icon"&gt;&lt;i class="fa
+              fa-file-pdf-o"&gt;&lt;/i&gt;<br />
+              &lt;/div&gt;<br />
+              &lt;div class="widget-download-details"&gt;<br />
+              &lt;div class="widget-download-title"&gt;&lt;a href="#"&gt;Company
+              Brochure&lt;/a&gt;&lt;/div&gt;<br />
+              &lt;div class="widget-download-subtitle"&gt;2.3 mb,
+              PDF&lt;/div&gt;<br />
+              &lt;/div&gt;<br />
+              &lt;/div&gt;<br />
+              <br />
+              &lt;div class="widget-download-link-wrapper"&gt;<br />
+              &lt;div class="widget-download-icon"&gt;&lt;i class="fa
+              fa-file-pdf-o"&gt;&lt;/i&gt;<br />
+              &lt;/div&gt;<br />
+              &lt;div class="widget-download-details"&gt;<br />
+              &lt;div class="widget-download-title"&gt;&lt;a href="#"&gt;Price
+              List&lt;/a&gt;&lt;/div&gt;<br />
+              &lt;div class="widget-download-subtitle"&gt;2.3 mb,
+              PDF&lt;/div&gt;<br />
+              &lt;/div&gt;<br />
+              &lt;/div&gt;
+              <p></p>
+            </div>
+            <p> </p>
+            <p>Change # to your real links, change texts and icons (instead of
+              fa-file-pdf-o you can use another icons codes from <a href="https://fontawesome.com/v4.7.0/icons/"
+                target="_blank">Font
+                Awesome </a>website). You can copy this code to add more
+              different files links to your widget and you can use this HTML
+              code on your site pages too (use Raw HTML element in WPBakery Page
+              Builder to add custom HTML to pages content).</p>
+            <p><strong>Promo Blocks widget</strong>:<br />
+              <br />
+              <img src="images/widget-promo-block.png" alt="" /> </p>
+            <p>You can use some elements that you used in Visual Page Builder in
+              page content in your widgets, for example MGT Promo Block.</p>
+            <p>To use this widget add default WordPress <strong>Text Widget </strong>to
+              your sidebar and add your Promo Block HTML code to it. To get
+              Promo Block element HTML code first create some sample Page and
+              add MGT Promo Block using Visual Composer. Adjust block settings
+              as you want. Then change Page editor mode to <strong>Classic view
+              </strong>(this will disable Page Builder) and switch content
+              editor to <strong>Text</strong> mode. You will see Promo Block
+              HTML code, copy it and paste to your text widget.</p>
+            <p><strong>Menu widget:</strong></p>
+            <p><img src="images/widget-menu.png" alt="" style="width: 224px; height: 440px;" /></p>
+            <p>You can add nicely styled custom menus to widget sidebars. For
+              example you can use this menu to show it on your services pages to
+              have access to all other services list.</p>
+            <p>To use this widget create new menu in <strong>Appearance &gt;
+                Menus </strong>and add your pages links (or other links that
+              you need) to this menu. Then go to <strong>Appearance &gt;
+                Widgets</strong> and add add <strong>Custom Menu</strong>
+              widget to your sidebar (for example Page sidebar):<br />
+              <br />
+              <img src="images/custom-menu-widget.png" alt="" /> </p>
+            <p><strong>CryptiBIT Recent posts widget:</strong></p>
+            <p><img src="images/widget-recent-posts.png" alt="" style="width: 275px; height: 331px;" /></p>
+            <p>You can use special theme widget to show recent posts with
+              images. Use "<strong>CryptiBIT</strong> <strong>Recent posts</strong>"
+              widget to achieve this. </p>
+            <p><strong><strong>CryptiBIT</strong> Social Icons widget:</strong></p>
+            <p><img src="images/widget-social-icons.png" alt="" style="width: 221px; height: 98px;" /></p>
+            <p>You can use special theme widget to show social icons (that you
+              specified in Theme Control Panel &gt; Social Icons). <br />
+              <br />
+              Also you can show this icons anywhere in content or text widgets
+              inside sidebars using shortcode: <strong>[cryptibit_social_icons]
+              </strong><br />
+              <br />
+            </p>
+            <h4>USING "DISPLAY WIDGETS" plugin To show widgets on specific pages
+              only</h4>
+            <p>Our theme include special <strong>AH Display Widgets </strong>plugin
+              that allow you to specify pages where your widgets will be visible
+              or not. If you want to use this feature this plugin must be
+              installed and activated.</p>
+            <p><strong>To use this feature:</strong></p>
+            <ol>
+              <li>Add some widget to one of your sidebars.</li>
+              <li>You will see new widget display settings in your widget.</li>
+            </ol>
+            <p><img src="images/custom-menu-widget.png" alt="" /><br />
+            </p>
+            <div style="clear:both;"></div>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- / content_element -->
+          <div id="theme_settings" class="content_element">
+            <h4 class="option_title">THEME Settings</h4>
+            <p>You can manage multiple theme settings in our <strong> Theme
+                Control Panel</strong> module. </p>
+            <p><a href="images/control-panel.png" rel="prettyPhoto"><img src="images/control-panel.png" /></a>
+            </p>
+            <ol>
+              <li>Go to <strong>Appearance &gt; Theme Control Panel</strong>
+                from left menu in WP admin panel.</li>
+              <li>Click <strong>Save</strong> button first time to apply
+                default theme settings to theme.</li>
+              <li>You can <strong>manage a lot of theme options</strong> from
+                this panel, check all available Tabs with settings.</li>
+              <li>If you want to reset settings to default values you can click
+                <strong>Reset</strong> button at the top right.</li>
+              <li>After you made any changes you should click <strong>Save</strong>
+                button to save theme settings.</li>
+              <li>You can <strong>Export</strong> all saved settings to file
+                and import it later, use<strong> Settings Backup </strong>tab
+                for this feature.</li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="headers" class="content_element">
+            <h4 class="option_title">Headers layouts configuration</h4>
+            <p>Our theme allow you to use different Header settings to achieve
+              different header layouts (menu positions, colors, promo texts and
+              banners, etc). You can create unlimited headers variations using
+              different settings located at <strong>Appearance &gt; Theme
+                Control Panel &gt; Header, Logo, Menus.</strong> </p>
+            <p>Additionally our theme allow to select two completely different
+              types of headers (Header position style option):<br />
+              <br />
+              <img src="images/header-left-side-1.jpg" /> </p>
+            <ol>
+              <li><strong>Top header </strong>- regular header with top menu,
+                different menu types and mega menu support, multiple options,
+                sticky header feature, etc.</li>
+              <li><strong>Left side header </strong>- simple left side header,
+                with one simple responsive menu, logo, optional search, optional
+                social icons, special left header sidebar with any widgets and
+                custom info text. </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="transparent_header" class="content_element">
+            <h4 class="option_title">TRANSPARENT HEADER CONFIGURATION</h4>
+            <p>Our theme allow you to use transparent header on any page, post
+              or portfolio element separately. This mean that all header (logo,
+              menus, etc) will be displayed above your top page content with
+              transparent background. This is very useful for pages where you
+              have fullwidth Revolution slider or fullwidth Image/Block at the
+              page top and you disabled page title.</p>
+            <p>You can <a href="https://wp.wp-preview.com/cryptoico/cryptoico-1/"
+                target="_blank">check
+                live demo for this feature here</a>.</p>
+            <p><img src="images/transpheader_1.jpg" /></p>
+            <h4>USING TRANSPARENT HEADER </h4>
+            <ol>
+              <li>First of all <strong>upload your light (white) logo version </strong>for
+                transparent header according <a href="#logo">logo upload
+                  instructions</a> from this guide.</li>
+              <li><strong>Open your Page/Post/Portfolio page</strong> when you
+                want to show transparent header (for example your homepage).</li>
+              <li><strong>Make sure that your page starting from fullwidth row </strong>with
+                fullwidth slider, fullwidth image or fullwidth block with image
+                (so your transparent header will look nice on this page top). <br />
+                Read<a href="#fullwidth-sections"> this documentaiton section</a>
+                how to use fullwidth rows in Page Builder.</li>
+              <li><strong>Disable page title</strong> for this page and check <strong>Show
+                  transparent header</strong> option for your page::<br />
+                <br />
+                <img src="images/transpheader_2.png" /></li>
+              <li><strong>Save your page</strong>, post or portfolio element.</li>
+              <li>You can use transparent header with or without <strong>Sticky
+                  Header feature </strong>that you can enable/disable in <strong>Appearance
+                  &gt; Theme Control Panel &gt; Header</strong>.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="onepage" class="content_element">
+            <h4 class="option_title">ONEPAGE USAGE</h4>
+            <p>Our theme allow you to have Onepage website instead of multipage.
+              This mean that all your main content will be displayed on the same
+              one Homepage and menu links will scroll your page to different
+              sections of your homepage content. This allow your visitors to see
+              all your website on the same page and easy and fast navigate
+              between site sections without leaving your homepage and without
+              page refresh/reloading. </p>
+            <h4>CREATE ONEPAGE MENU ITEMS</h4>
+            <p>Before starting to add your onepage content you need to create
+              menu items that will work as links for your onepage sections:</p>
+            <ol>
+              <li><strong>MegaMenu</strong> feature should be enabled in <strong>Appearance
+                  &gt; Theme Control Panel &gt; Mega Menu</strong>.</li>
+              <li>Go to <strong>Appearance &gt; Menus</strong> and add menu
+                item <strong>Link</strong>:<br />
+                <br />
+                <img src="images/onepage-1.png" /></li>
+              <li>You need to add your<strong> item slug </strong>to<strong>
+                  URL field </strong>with<strong> # symbol at start (this is
+                  important!)</strong>, you can specify anything here, but you
+                should use only english latters here and - or _ symbols. Do not
+                use space symbol here or another languages letters or
+                specsymbols.<br />
+                For example for Contact Us page slug in our sample all of this
+                will be correct and can be used as URL:
+                <ul>
+                  <li>#contact-us</li>
+                  <li>#contactus</li>
+                  <li>#contacts</li>
+                  <li>#contact_us</li>
+                </ul>
+              </li>
+              <li>If you need to add <strong>homepage link that should scroll
+                  page to top</strong> (to start of website), you need to use
+                special predefined url: <strong>#top</strong></li>
+              <li><strong>Add link title</strong> to<strong> Link Text </strong>(this
+                link name will be visible in menu). </li>
+              <li>Click <strong>Add to Menu</strong>.</li>
+              <li>Find this created item in menu and open its <strong>Settings</strong>:<br />
+                <img src="images/onepage-2.png" /> </li>
+              <li>Select <strong>YES</strong> for <strong>Use this menu item
+                  for Onepage navigation </strong>option.</li>
+              <li>Now you can add section for your homepage that will use this
+                menu item.</li>
+            </ol>
+            <h4>CREATE ONEPAGE HOMEPAGE</h4>
+            <ol>
+              <li><strong>Edit or Create</strong> your Homepage page</li>
+              <li><strong>Using Page Builder add content to your page</strong>
+                that you need to see on your homepage. You should create all
+                content sections on the same page.<br />
+                <br />
+                For example your Onepage homepage can contain this logical
+                sections:
+                <ol>
+                  <li>Slider</li>
+                  <li>Welcome/About us text</li>
+                  <li>Portfolio grid</li>
+                  <li>Newsletter signup block</li>
+                  <li>Blog posts (News)</li>
+                  <li>Contact us form</li>
+                  <li>Google map (Find us)</li>
+                </ol>
+              </li>
+              <li>In our example we added Contact us link before and want to
+                point it to Contact us form on our Onepage Homepage.</li>
+              <li>In your Onepage page in Visual Page Builder editor<strong>
+                  find Row that contain your Contact us</strong> form and Open
+                this Row settings:<br />
+                <br />
+                <a href="images/onepage-3.png" rel="prettyPhoto"><img src="images/onepage-3.png" /></a>
+              </li>
+              <li>In<strong> Row settings</strong> select your menu link in <strong>Use
+                  as Onepage section </strong>dropdown list that should be used
+                for this section on Onepage page navigation:<br />
+                <br />
+                <a href="images/onepage-4.png" rel="prettyPhoto"><img src="images/onepage-4.png" /></a></li>
+              <li><strong>Publish</strong> your page.</li>
+              <li>Now when you click your <strong>Contact us</strong> link in
+                menu your homepage will be scrolled to your <strong>Contact us
+                  section</strong>.</li>
+              <li><strong>In the same way you need to create links and sections
+                  for all your Onepage logical sections</strong>. You can
+                combine regular links (that open pages) and OnePage links (that
+                scroll down homepage to section) in the same menu and have
+                Onepage+Multipage website together on one site.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="portfolio" class="content_element">
+            <h4 class="option_title">PORTFOLIO USAGE</h4>
+            <p>In our theme you can choose between <strong>different portfolio
+                grid layout variations</strong>, <strong>fullwidth or boxed</strong>
+              layouts, <strong>spaced or regular grid</strong>, <strong>portfolio
+                item hover animations</strong>, <strong>different category
+                filter animations, 3 column count settings</strong> and more!</p>
+            <p>All this <strong>settings can be combined with each other</strong>
+              that gives you <strong>unlimited design variations</strong> of
+              your Portfolio page.</p>
+            <p>Our theme have built-in portfolio feature that allow you to add
+              your works/projects on site and showcase it to your users.</p>
+            <h4>CREATE PORTFOLIO PAGE</h4>
+            <ol>
+              <li>Go to <strong>Pages &gt; Add new </strong>and create <strong>Portfolio</strong>
+                page (You can use any name for page).</li>
+              <li>Using Page Builder add <strong>MGT Portfolio Grid </strong>element
+                to your page:<br />
+                <br />
+                <a href="images/portfolio_1.png" rel="prettyPhoto"><img src="images/portfolio_1.png" /></a></li>
+              <p>You can select many different options and layouts for your
+                portfolio grid display in element settings. </p>
+              <li>If you want to show your Portfolio displayed Fullwidth you
+                need to enable <a href="#fullwidth-sections">Fullwidth option</a>
+                in your Row settings.</li>
+              <li><strong>Publish</strong> your page.</li>
+            </ol>
+            <h4><strong>ADD PORTFOLIO ITEMS AND CATEGORIES</strong></h4>
+            <ol>
+              <li>Go to <strong>Portfolio items &gt; Add new item</strong>.</li>
+              <li>Add<strong> Portfolio Item name</strong>.</li>
+              <li>Specify your <strong>Porfolio item thumbnail</strong> (it
+                will be used in Portfolio grid that you just created):<br />
+                <br />
+                <a href="images/portfolio_2.png" rel="prettyPhoto"><img src="images/portfolio_2.png" /></a></li>
+              <li>Add <strong>Additional portfolio item images </strong>if you
+                want (you can use it as slider or as grid):<br />
+                <br />
+                <a href="images/portfolio_3.png" rel="prettyPhoto"><img src="images/portfolio_3.png" /></a><br />
+                <br />
+              </li>
+              <li>Add your <strong>Porftolio element description</strong> using
+                page builder (you can use any elements here) in Content editor
+                area.</li>
+              <li>Select/Create your <strong>Portfolio item categories:</strong><br />
+                <br />
+                <a href="images/portfolio_5.png" rel="prettyPhoto"><img src="images/portfolio_5.png" /></a></li>
+              <li><strong>Choose different Portfolio item layout/display
+                  settings</strong> in<strong> Portfolio item settings</strong>
+                box:<br />
+                <br />
+                <a href="images/portfolio_6.png" rel="prettyPhoto"><img src="images/portfolio_6.png" /><br />
+                </a></li>
+              <br />
+              If you does not see this settings box this means you does not
+              installed all theme required plugins (CryptiBIT Theme Addons,
+              CryptiBIT Custom Meta Boxes (CMB2) plugins).<br />
+              <br />
+              <strong>Short description </strong>field text will be visible in
+              MGT Portfolio Grid as additional text after item title and
+              category. It will not be visible on single portfolio element page.<br />
+              <br />
+              <li><strong>Publish</strong> your Portfolio element.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="cryptoheader" class="content_element">
+            <h4 class="option_title">Crypto header usage</h4>
+            <p>You can show special crypto header with 6 selected by you crypto
+              assets exchange rates in site header (above or below header, light
+              or dark).</p>
+            <p><img src="images/cryptoheader-1.jpg" /></p>
+            You can manage this element settings in <strong>Appearance &gt;
+              Theme Control Panel &gt; Header, Logo, Menus &gt; Crypto header
+              statistics settings:<br />
+              <br />
+            </strong><img src="images/cryptoheader-2.jpg" /><br />
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="page_builder_elements" class="content_element">
+            <h4 class="option_title">PAGE BUILDER EXTRA ELEMENTS</h4>
+            <p>Our theme included<strong> special Page Builder elements</strong>
+              that we developed especially for this theme (this elements does
+              not available in Page Builder plugin in other themes).</p>
+            <p>You can use any default Page Builder elements with our theme too,
+              about it usage you can read in <a href="https://kb.wpbakery.com/"
+                target="new">official
+                page builder documentation</a>. </p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="fullwidth-sections" class="content_element">
+            <h4 class="option_title">Fullwidth/Parallax Sections</h4>
+            <p>Our theme allow you to create Page Builder rows with fullwidth
+              display for background or content and add parallax image/video
+              background to this rows. </p>
+            <p>You can add any content (for example any other Page Builder
+              elements) inside this fullwidth rows and this elements will be
+              displayed fullwidth too.</p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li>Add new <strong>Row</strong> or edit existing.</li>
+              <li>Click <strong>Edit</strong> button for your <strong>Row</strong>
+                element to open its settings:<br />
+                <br />
+                <a href="images/fullwidth-sections-1.png" rel="prettyPhoto"><img
+                    src="images/fullwidth-sections-1.png" /><br />
+                </a> </li>
+              <li>You will see<strong> Settings window </strong>for row that
+                allow you to make your Row fullwidth:<br />
+                <br />
+                <a href="images/fullwidth-sections-2.png" rel="prettyPhoto"><img
+                    src="images/fullwidth-sections-2.png"
+                    height="519"
+                    width="604" /></a>|<br />
+                <br />
+              </li>
+              <ul>
+                <li><strong>Row stretch</strong> - Select how you want to
+                  stretch content/background in this row to make it fullwidth.
+                  You can stretch only background or background with content
+                  (with/without paddings).</li>
+                <li><strong>Use video background </strong>- You can add YouTube
+                  video as background to row with any content</li>
+                <li><strong>Parallax </strong> - You can add Parallax
+                  background for current Row (we recommend you to use 1600px or
+                  more width image for this).<br />
+                </li>
+              </ul>
+              <li><strong>Save</strong> your page/post. <br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-header-block" class="content_element">
+            <h4 class="option_title">Header Block</h4>
+            <p>You can add special preformated header blocks with title and
+              subtitle for your page.<br />
+            </p>
+            <p align="center"><a href="images/mgt-header-block.png" rel="prettyPhoto"><img
+                  src="images/mgt-header-block-demo.png" /></a>
+            </p>
+            <h4><br />
+              How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Header Block</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /><br />
+                </a> </li>
+              <li>Add <strong>Title</strong>, <strong>Subtitle</strong> and
+                select other options for this element.<br />
+              </li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-promo-block" class="content_element">
+            <h4 class="option_title">PROMO BLOCK</h4>
+            <p>You can add special promo blocks with optional background image,
+              hover effects, parallax effects buttons and much more. This blocks
+              can be any size and very useful to create attractive interactive
+              banners on your website. This is very powerfull theme element that
+              allow you to create a lot of creative things and can be used in
+              most of all of your website. Most of all our theme demo homepages
+              created just with promo blocks with different settings, check
+              theme demo pages to understand how we configured this blocks.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-promo-block-1.jpg" /><br />
+                <br />
+                <img src="images/mgt-promo-block-2.jpg" /></a> </p>
+            <p><a href="images/mgt-promo-block-4.jpg" rel="prettyPhoto"><img src="images/mgt-promo-block-3.jpg" /></a></p>
+            <h4><br />
+              How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Promo Block</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-promo-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this block and even show it fullwidth
+                (inside fullwidth row).</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-flip-box" class="content_element">
+            <h4 class="option_title">FLIP BOX</h4>
+            <p>You can add special double sided animated blocks with different
+              content on both sides, that flips on mouse hover.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-flip-box-1.jpg" /></a><a
+                href="images/mgt-promo-block-4.jpg"
+                rel="prettyPhoto"><br />
+              </a> </p>
+            <h4> How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Flip Box</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-promo-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this block.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-images-slider" class="content_element">
+            <h4 class="option_title">IMAGES SLIDER &amp; carousel</h4>
+            <p>You can add images slider or carousel with different effects and
+              styles using this element.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-images-slider-1.jpg" /></a><a
+                href="images/mgt-promo-block-4.jpg"
+                rel="prettyPhoto"><br />
+              </a> </p>
+            <h4> How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Images Slider &amp; Carousel</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-promo-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this block.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-process-block" class="content_element">
+            <h4 class="option_title">Process block</h4>
+            <p>You can add process blocks to show some process steps
+              info-graphic.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-process-block-1.png" /></a></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-process-block-2.png" /></a><a
+                href="images/mgt-promo-block-4.jpg"
+                rel="prettyPhoto"><br />
+              </a> </p>
+            <h4> How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add VC Row with Columns </strong>(you need to add one
+                process element to every column).</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Process</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-promo-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this block.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-pricing-table" class="content_element">
+            <h4 class="option_title">PRICING TABLE</h4>
+            <p>You can add multiple pricing tables to your site, with different
+              styles, colors, borders, icons, etc.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-pricing-table-1.png" rel="prettyPhoto"><img src="images/mgt-pricing-table-1.png" /></a>
+            </p>
+            <h4><br />
+              How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li>Add new<strong> Row with several columns </strong>(for
+                example if you want to have 3 pricing tables in one row you need
+                to add Row with 3 Columns inside.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button
+                </strong>inside column and choose <strong>MGT Pricing Table</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-pricing-table-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this pricing table.</li>
+              <li><strong>Add / Duplicate more pricing tables</strong> to other
+                columns.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-item-price" class="content_element">
+            <h4 class="option_title">Item price</h4>
+            <p>You can add item price elements to create nice simple listings
+              with prices, for example restaurant menu.</p>
+            <p align="center"></p>
+            <p><a href="images/mgt-promo-block-1.jpg" rel="prettyPhoto"><img src="images/mgt-item-price-1.png" /></a><a
+                href="images/mgt-promo-block-4.jpg"
+                rel="prettyPhoto"><br />
+              </a> </p>
+            <h4> How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add VC Row with Columns </strong>(you need to add one
+                process element to every column).</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Process</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-promo-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can customize a lot of
+                different options in this block.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-iconbox" class="content_element">
+            <h4 class="option_title">ICON BOX</h4>
+            <p>You can add special preformated blocks with icons to your
+              content. This block allow you to insert just icon, without
+              content, too.<br />
+            </p>
+            <p align="center"><a href="images/mgt-icon-box.png" rel="prettyPhoto"><img
+                  src="images/mgt-icon-box.png" /></a></p>
+            <br />
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Icon Box</strong>:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-icon-box-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. </li>
+              <li><strong>Add your information</strong> to this block,<strong>
+                  upload your icon</strong>, <strong>select layout.</strong><br />
+              </li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-post-list" class="content_element">
+            <h4 class="option_title">Posts Slider/Grid</h4>
+            <p>You can show your blog posts as sliders or grids.<br />
+              <br />
+              <img src="images/mgt-post-list-1.jpg" /></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Posts List</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-post-list-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can select different layouts,
+                slider options, grid display and more.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-cta-block" class="content_element">
+            <h4 class="option_title">Call to action block</h4>
+            <p>You can attract your website visitors with special Call to Action
+              blocks with button.<br />
+              <br />
+              <img src="images/mgt-cta-block-1.png" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Call To Action Block</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-cta-block-3.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it.</li>
+              <li>Add your <strong>title</strong>, <strong>subtitle</strong>,
+                <strong>text</strong> and <strong>button</strong> with <strong>url</strong>.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-signup-block" class="content_element">
+            <h4 class="option_title">Signup/SUBSCRIBE Block</h4>
+            <p>You can add signup block that allow your users to subscribe to
+              your Newsletter by email via <a href="http://eepurl.com/YeXzf" target="_blank">Mailchimp</a>
+              service.<br />
+              <br />
+              <img src="images/mgt-signup-block-1.png" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Signup Block</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-signup-block-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can select different layouts,
+                slider options, grid display and more.</li>
+              <li>Select <strong>Text color,</strong> <strong>Background color</strong>,
+                <strong>Signup text,</strong> <strong>Button text.</strong></li>
+              <li>You need to get your <strong>Mailchimp subscribe form ACTION
+                  url</strong>:
+                <ol>
+                  <li>Login to your account at <a href="http://mailchimp.com/"
+                      target="_blank">Mailchimp</a>
+                    service.</li>
+                  <li>Go to <strong>Lists</strong> in top menu</li>
+                  <li>Around your subscribers list <strong>click little arrow
+                      button </strong>and select <strong>Signup forms</strong>.<br />
+                    <a href="images/mgt-signup-block-3.png" rel="prettyPhoto"><img
+                        src="images/mgt-signup-block-3.png" /></a></li>
+                  <li>Select <strong>Embedded forms</strong>.</li>
+                  <li>You will see your subscribe form HTML code,<strong> copy
+                      it and paste </strong>to some text editor (for example to
+                    Notepad or TextEdit.<br />
+                    <br />
+                    You need to find your form action url inside this form code
+                    (bold code in sample below):<br />
+                    <br />
+                    <div class="code">&lt;!-- Begin MailChimp Signup Form --&gt;<br />
+                      &lt;div id="mc_embed_signup"&gt;<br />
+                      &lt;form action="<strong>//magniumthemes.us8.list-manage.com/subscribe/post?u=6ff05dsafv19df7a7fc1c84e4ad&amp;amp;id=323285b358e7</strong>"
+                      method="post" id="mc-embedded-subscribe-form"
+                      name="mc-embedded-subscribe-form" class="validate"
+                      target="_blank" novalidate&gt;<br />
+                      &lt;div id="mc_embed_signup_scroll"&gt;<br />
+                      &lt;h2&gt;Subscribe to our mailing list&lt;/h2&gt;<br />
+                      &lt;div class="indicates-required"&gt;&lt;span
+                      class="asterisk"&gt;*&lt;/span&gt; indicates
+                      required&lt;/div&gt;<br />
+                      &lt;div class="mc-field-group"&gt;<br />
+                      &lt;label for="mce-EMAIL"&gt;Email Address &lt;span
+                      class="asterisk"&gt;*&lt;/span&gt;<br />
+                      &lt;/label&gt;<br />
+                      &lt;input type="email" value="" name="EMAIL"
+                      class="required email" id="mce-EMAIL"&gt;<br />
+                      &lt;/div&gt;<br />
+                      &lt;!-- real people should not fill this in and expect
+                      good things - do not remove this or risk form bot
+                      signups--&gt;<br />
+                      &lt;div style="position: absolute; left:
+                      -5000px;"&gt;&lt;input type="text"
+                      name="b_6ff051d919df7a7fc1c84e4ad_9285b358e7"
+                      tabindex="-1" value=""&gt;&lt;/div&gt;<br />
+                      &lt;div class="clear"&gt;&lt;input type="submit"
+                      value="Subscribe" name="subscribe"
+                      id="mc-embedded-subscribe" class="button"&gt;&lt;/div&gt;<br />
+                      &lt;/div&gt;<br />
+                      &lt;/form&gt;<br />
+                      &lt;/div&gt;<br />
+                    </div>
+                    <br />
+                    In our sample code we are looking for this: <br />
+                    <strong>//magniumthemes.us8.list-manage.com/subscribe/post?u=6ff05dsafv19df7a7fc1c84e4ad&amp;amp;id=323285b358e7</strong>
+                    <br />
+                  </li>
+                </ol>
+              </li>
+              <li>Add your subscribe form action url to <strong>Mailchimp
+                  subscribe form ACTION url </strong>field.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-message-box" class="content_element">
+            <h4 class="option_title">Message box</h4>
+            <p>You can show different message boxes on your website to announce
+              something important.<br />
+              <br />
+              <img src="images/mgt-message-box.png" /></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Message Box</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-message-box-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it.</li>
+              <li>Add message box <strong>text</strong>, choose <strong>style</strong>.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-portfoliogrid" class="content_element">
+            <h4 class="option_title">Portfolio grid</h4>
+            <p>You can show your portfolio items with category filter in
+              different grids with different layouts on any of your pages.<br />
+              <br />
+              <img src="images/mgt-portfolio-grid-1.jpg" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Portfolio Grid</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-portfolio-grid-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different layouts
+                and options for this element. You can show this element inside
+                fullwidth row.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-clientreviews" class="content_element">
+            <h4 class="option_title">Client Reviews</h4>
+            <p>You can add and show your Client Reviews as slider or grid on
+              your website.<br />
+              <br />
+              <img src="images/mgt-client-reviews-1.png" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li>Go to <strong>Client Reviews &gt; Add Review</strong> and add
+                few reviews with texts, titles (used for name and occupation)
+                and photos:<br />
+                <br />
+                <img src="images/mgt-client-reviews-3.png" /> <br />
+              </li>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Clients Reviews</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-client-reviews-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different layouts
+                and options for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-counter" class="content_element">
+            <h4 class="option_title">Counter</h4>
+            <p>You can show your completed goals or achievements with special
+              animated counters that will count from 0 to your value when user
+              scroll page to this element.<br />
+              <br />
+              <img src="images/mgt-counter-1.png" /><br />
+              <br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Counter </strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-counter-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-countdown" class="content_element">
+            <h4 class="option_title">Countdown timer</h4>
+            <p>You can show countdown timer in different formats to show
+              remaining timer for selected date.</p>
+            <p align="center"><img src="images/mgt-countdown-timer-1.png" style="width: 346px; height: 135px;" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Countdown </strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-countdown-timer-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-button" class="content_element">
+            <h4 class="option_title">Button</h4>
+            <p>You can add different buttons to your website.</p>
+            <p align="center"><a href="images/mgt-button-1.png" rel="prettyPhoto"><img
+                  src="images/mgt-button-1.png" /></a></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Button </strong> element:<br />
+                <br />
+                <img src="images/mgt-vc-elements.png" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-timeline" class="content_element">
+            <h4 class="option_title">Timeline</h4>
+            <p>You can add vertical timeline/roadmap with event elements on your
+              website. This elements included in<strong> <a href="https://codecanyon.net/item/ultimate-roadmap-timeline-responsive-wordpress-timeline-plugin/22697705">Ultimate
+                  Roadmap Timeline</a></strong> plugin provided with this theme.</p>
+            <p>You can read this <a href="https://magniumthemes.com/go/urt-docs/"
+                target="_blank">plugin
+                documentation</a> online here to understand how to use this
+              element.</p>
+            <p align="center"><img src="images/mgt-timeline-1.jpg" /></p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-team" class="content_element">
+            <h4 class="option_title">Team</h4>
+            <p>You can add and show your Team Members as grid on your website.<br />
+              <br />
+              <img src="images/mgt-team-1.jpg" /><br />
+            </p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li>Go to <strong>Team &gt; Add member</strong> and add few team
+                members with their details:<br />
+                <br />
+                <img src="images/mgt-team-2.png" style="width: 171px; height: 277px;" />
+                <br />
+              </li>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Team</strong> element:<br />
+                <br />
+                <a href="images/mgt-header-block.png" rel="prettyPhoto"><img src="images/mgt-vc-elements.png" /></a><a
+                  href="images/mgt-client-reviews-2.png"
+                  rel="prettyPhoto"><br />
+                </a> </li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different layouts
+                and options for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-priceticker" class="content_element">
+            <h4 class="option_title">Price ticker</h4>
+            <p>You can use price ticker element to show different cryptocurrency
+              real time prices on your site.</p>
+            <p align="center"><a href="images/mgt-button-1.png" rel="prettyPhoto"><img
+                  src="images/mgt-price-ticker-1.jpg" /></a></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Price Ticker </strong> element:<br />
+                <br />
+                <img src="images/mgt-vc-elements.png" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-btcprice" class="content_element">
+            <h4 class="option_title">Bitcoin price</h4>
+            <p>You can use Bitcoin price element to show Bitcoin price changes
+              with interactive graphs on your site.</p>
+            <p align="center"><a href="images/mgt-button-1.png" rel="prettyPhoto"><img
+                  src="images/mgt-bitcoin-price-1.jpg" /></a></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT Bitcoin Price </strong> element:<br />
+                <br />
+                <img src="images/mgt-vc-elements.png" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-icoprogress" class="content_element">
+            <h4 class="option_title">ICO progress</h4>
+            <p>You can use this element to show some ICO progress with details
+              (softcap, hardcap, etc) on your site.</p>
+            <p align="center"><a href="images/mgt-button-1.png" rel="prettyPhoto"><img
+                  src="images/mgt-ico-progress-1.jpg"
+                  style="width: 378px; height: 173px;" /></a></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT ICO Progress </strong> element:<br />
+                <br />
+                <img src="images/mgt-vc-elements.png" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-icorating" class="content_element">
+            <h4 class="option_title">ICO rating</h4>
+            <p>You can use this element to show ICO ratings with stars on your
+              site.</p>
+            <p align="center"><img src="images/mgt-ico-rating.jpg" /></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>MGT ICO Rating </strong> element:<br />
+                <br />
+                <img src="images/mgt-vc-elements.png" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="mgt-vcw" class="content_element">
+            <h4 class="option_title">Virtual Coin Widgets</h4>
+            <p>You can use different Virtual Coin Widgets elements to display
+              cryptocurrency elements on your site (price changes, tables,
+              converters, etc). This elements comes from <a href="https://codecanyon.net/item/virtual-coin-widgets-for-visual-composer/19383504"
+                target="_blank">Virtual
+                Coin Widgets plugin</a> included with theme.</p>
+            <p align="center"><img src="images/mgt-vcw-1.jpg" /></p>
+            <p align="center"><img src="images/mgt-vcw-2.jpg" /></p>
+            <p align="center"><img src="images/mgt-vcw-3.jpg" /></p>
+            <h4>How to use this element</h4>
+            <ol>
+              <li><strong>Open</strong> your Page/Post/Portfolio item and turn
+                on Backend/Frontend Visual Page builder editor.</li>
+              <li><strong>Add new element</strong> by clicking<strong> + button</strong>
+                and choose <strong>VCW </strong>element from <strong>Virtual
+                  Coin Widgets tab</strong>:<br />
+                <br />
+                <img src="images/mgt-vcw-elements.jpg" /></li>
+              <li><strong>Read options descriptions</strong> in Settings window
+                to understand how to use it. You can choose different options
+                for this element.</li>
+              <li><strong>Save</strong> your page/post.<br />
+              </li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div class="content_element" id="gdpr">
+            <h4 class="option_title">Cookie Notice (GDPR)</h4>
+            You can display cookie notice on your site for your visitors with
+            link to your private policy page. <strong>Cookie Law Info </strong>plugin
+            must be installed to use this feature you can download it here:<br />
+            <br />
+            <a href="https://wordpress.org/plugins/cookie-law-info/" target="_blank">https://wordpress.org/plugins/cookie-law-info/<br />
+            </a><br />
+            The creators of this plugin do not have a legal background. We
+            assist website and webshop owners in being compliant with the
+            General Data Protection Regulation (GDPR) but recommend contacting a
+            law firm for rock solid legal advice.
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="translations" class="content_element">
+            <h4 class="option_title">Translations</h4>
+            <p>This theme is translation ready and <a href="http://magniumthemes.com/go/wpml/"
+                target="_blank">WPML
+                plugin</a> compatible and this mean you can easy adapt it to
+              your language or use it multilanguage. You can translate theme
+              manualy of using Translation plugin that we included with theme.</p>
+            <p>Please not that <strong>you need to purchase 1 additional
+                Regular theme license</strong> for our theme<strong> for every
+                language </strong>on your site if you have <strong>multilanguage
+                website (even on one domain)</strong>. For example if you have
+              your site versions in English, German and Italian languages you
+              need to purchase 2 additional regular theme licenses (in addition
+              to current one that you have for English).</p>
+            <h4>Manual theme translation</h4>
+            <p>We included POT files for translation with theme:</p>
+            <ul>
+              <li>/wp-content/themes/cryptibit/languages/ - main theme
+                translations</li>
+            </ul>
+            <p>Check this guides about translating themes and WordPress:</p>
+            <p><a href="https://premium.wpmudev.org/blog/how-to-translate-a-wordpress-theme/">https://premium.wpmudev.org/blog/how-to-translate-a-wordpress-theme/</a></p>
+            <p><a href="http://www.wpbeginner.com/beginners-guide/how-to-easily-create-a-multilingual-wordpress-site/">http://www.wpbeginner.com/beginners-guide/how-to-easily-create-a-multilingual-wordpress-site/</a><br />
+              <br />
+            </p>
+            <h4>Translation with provided THEME translation manager </h4>
+            <p>If you installed and activated Translation Manager (Loco
+              Translate plugin provided with theme) you can translate theme with
+              it:</p>
+            <ol>
+              <li>Go to<strong> Loco Translate &gt; Manage translations</strong>.</li>
+              <li>Click <strong>New language</strong> near theme in list.</li>
+              <li><strong>Translate</strong> all theme strings in admin panel.</li>
+            </ol>
+            <p>If you have any problems with translation you need to contact
+              your translation plugin support for help or ask for help at
+              WordPress forums - <a href="http://wordpress.org/support/">http://wordpress.org/support/</a></p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- / content_element --><!-- / content_element -->
+          <div id="wpml" class="content_element">
+            <h4 class="option_title">WPML PLUGIN (MULTILANGUAGE WEBSITE)</h4>
+            <div>
+              <div>
+                <p>Here is what you need to know on turning our theme <strong>multilingual
+                    with WPML.</strong></p>
+                <p>First, you need to to purchase a recent version of <strong><a
+                      href="http://magniumthemes.com/go/wpml/">WPML</a></strong>,
+                  including the <strong>String Translation</strong> and <strong>Translation
+                    Management</strong> modules. You can install WPML plugins
+                  automaticaly from<strong> Theme Control Panel &gt;
+                    Multilingual (WPML)</strong> tab. </p>
+                <h4>Initial Setup</h4>
+                <p>- Install and activate the core WPML plugins (WPML
+                  Multilingual CMS, WPML String Translation, WPML Translation
+                  Management), and then other WPML plugins that may depend on
+                  them.</p>
+                <p>- Set up WPML from <strong>WPML &gt; Languages</strong>. See
+                  WPML <a href="http://wpml.org/documentation/getting-started-guide/"
+                    target="_blank">Getting
+                    Started Guide</a> for complete reference, but the initial
+                  simple three-step setup is self-explanatory, asking you to
+                  choose your default language, a set of active languages, and a
+                  language selector.</p>
+                <h4>Translating Pages, Posts and other post types</h4>
+                <p>To translate a page you need to go to <strong>WordPress
+                    admin panel &gt; Pages</strong> and in the list you will see
+                  columns for each active language, with a pencil icon (for
+                  ‘edit translation’) or a ‘+’ icon (for ‘add translation’) next
+                  to each page. Go ahead and edit or add the translated page for
+                  your Homepage.</p>
+                <p>Right now you just need to translate your page into the new
+                  language:</p>
+                <p><a href="images/wpml-1.png"><img src="images/wpml-1.png" /></a></p>
+                <p><a href="http://wpml.org/documentation/translating-your-contents/displaying-untranslated-content-using-content-duplication/"
+                    target="_blank">Read
+                    this to easily duplicate your existing content. </a></p>
+                <h4>Translating custom post types and taxonomies</h4>
+                <p>Our theme and some plugins can have extra custom post types,
+                  and custom taxonomies. In order to get a similar interface for
+                  translation/duplication as for posts and pages, you need to go
+                  to <strong>WPML &gt; Translation Management</strong>, and
+                  select the tab ‘Multilingual Content Setup’.</p>
+                <h4>Translating Menus and Language Switcher in Header</h4>
+                <p>WPML can synchronize menus for you. This means that if some
+                  entries, for example some pages, posts or categories, are in
+                  the English menu, WPML can generate and keep in synch menus
+                  for other languages pointing to the translated versions of
+                  these pages, posts or categories.</p>
+                <p>From WordPress <strong>Appearance &gt; Menus</strong> you
+                  can see your existing menus and add menu translations and
+                  synchronize menus across translations.</p>
+                <p>To use Multi Currency on your website you need to install <a
+                    href="https://wordpress.org/plugins/woocommerce-multilingual/"
+                    target="_blank">WooCommerce
+                    Multilingual plugin</a> for WPML.</p>
+                <p>To show the language and currency switchers in the header you
+                  need to configure it in WPML and then activate it from <strong>Magnium
+                    Control Panel &gt; Header</strong>. </p>
+                <h4>Translating theme texts and other strings in your site</h4>
+                <p>To translate strings you need to follow the procedure for <a
+                    href="http://wpml.org/documentation/getting-started-guide/theme-localization/">Theme
+                    and Plugin Localization</a>. Go to <strong>WPML &gt; Theme
+                    and Plugin Localization</strong>, and click on ‘Scan the
+                  theme for strings’ and you will see theme strings and which
+                  ones are translated or not.</p>
+              </div>
+            </div>
+            <p> </p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- / content_element --><!-- / content_element -->
+          <div id="child" class="content_element">
+            <h4 class="option_title">Child theme usage</h4>
+            <p>A child theme is a special kind of WordPress theme that inherits
+              all of the design elements of its parent theme. A child theme with
+              no customization is identical to its parent.</p>
+            <p><strong>WHEN YOU DON'T NEED TO USE CHILD THEME:</strong></p>
+            <p>1) Change theme options.<br />
+              2) Add/change plugins.<br />
+              3) Change/add CSS styles to theme (use Customize &gt; Additional
+              CSS instead).<br />
+              4) Change/add JavaScript in theme (use Theme Control Panel &gt;
+              Custom JS instead).<br />
+              5) Add new features to theme without code (use Plugins instead).</p>
+            <p><strong>WHEN YOU NEED TO USE CHILD THEME:</strong></p>
+            <p>1) You are WordPress developer and want to code your PHP
+              functions to extend theme features or add your own.<br />
+              2) You are WordPress developer and want to override theme PHP
+              functions with your own functions to change something.<br />
+              3) You want to completely change HTML templates in theme or add
+              your own templates (you need to know PHP/HTML coding for this).</p>
+            <p><strong>HOW TO INSTALL &amp; USE CHILD THEME:</strong></p>
+            <p>1) Install parent theme first, activate it, install and activate
+              all theme plugins first.<br />
+              2) Install child theme in the same way from ZIP file and activate
+              it.<br />
+              3) Refer to WordPress documentation how to work with child theme:
+              https://codex.wordpress.org/Child_Themes</p>
+            <p>You can find Child Theme in "Child theme" folder inside full
+              theme ZIP archive (All files&amp;Documentation) from Themeforest.
+              To install child theme you need to upload it to WordPress as
+              regular theme. </p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="speedup" class="content_element">
+            <h4 class="option_title">PERFORMANCE AND SPEED</h4>
+            Our theme created for very fast and effective work, with correct
+            server configuration and content optimization you can get <strong>100
+              / 100 </strong> score in <a href="https://developers.google.com/speed/pagespeed/insights/"
+              target="_blank">Google
+              PageSpeed Insights test</a> and A grade in <a href="https://gtmetrix.com/"
+              target="_blank">GTMetrix</a>
+            tests.<br />
+            <p>Site speed depends on multiple factors and theme itself is just
+              one of this (theme already coded for extra fast work), like
+              WordPress configuration, Server configuration and quality and
+              Content optimization. We included simple guide how to optimize
+              your website for extra fast work with our theme.</p>
+            <p><strong>Important steps to optimize your website:</strong></p>
+            <ul>
+            </ul>
+            <ol>
+              <li>Make sure that you have good hosting/server (we recommend to
+                use <a href="http://magniumthemes.com/go/bluehost/" target="_blank">Bluehost</a>
+                to host WordPress themes). You will never get good score on
+                cheap shared hosting. If you see in Google Page speed warnings
+                about large "Service response time" - this means your hosting
+                performance is very bad and hosting have slow connection speed.</li>
+              <li> Install <a href="https://wordpress.org/plugins/w3-total-cache/"
+                  target="_blank">W3TotalCache</a>
+                plugin and correctly configure it (enable all caches and
+                configure it correctly).</li>
+              <li>Prepare your post images (resize and compress) before you
+                upload it to WordPress (use images like 1200x800px JPG with 80%
+                quality. Never upload original images from your camera in high
+                resolutions like 4000x3000px).</li>
+              <li>After you resized your images compress it with lossless images
+                compression utilities - . Only after this you can upload your
+                images to WordPress. You can use this software: <a href="https://imageoptim.com/mac"
+                  target="_blank">ImageOptim</a>
+                (MacOS) or <a href="https://saerasoft.com/caesium/" target="_blank">Caesium</a>
+                (Windows). You need to properly configure this software (not
+                just process images with default settings) for good results.</li>
+              <li>Use less third party widgets and elements that connects to
+                external services (Facebook widgets, Instagram widgets, etc).</li>
+              <li>Enable browser caching and cache expiration dates on server
+                for static files (you can ask hosting support how to do this on
+                your server).</li>
+              <li>Disable all third-party plugins that you does not use to
+                speed-up your website if your hosting is not very fast.</li>
+              <li>Use third party services that optimize your server response
+                time and cache, like <a href="https://www.cloudflare.com/" target="_blank">CloudFlare</a>.</li>
+              <li>Check this official <a href="http://codex.wordpress.org/WordPress_Optimization"
+                  target="_blank">WordPress
+                  Optimization guide article</a> and external article links in
+                it.</li>
+            </ol>
+            <ul>
+            </ul>
+            <p>If you still get bad score you can <a href="http://support.magniumthemes.com/"
+                target="_blank">contact
+                our support</a> to get suggestions why your site have low score.</p>
+            <p>If you need help with site speed and score optimization<strong>
+                you can order our special service </strong>with <strong>20%
+                discount </strong>because you purchased this theme:</p>
+            <strong>Order <a href="https://studio.envato.com/explore/wordpress-customization/24242-premium-wordpress-website-google-page-speed-and-seo-optimization"
+                target="_blank">Premium
+                WordPress Website Google Page Speed and SEO Optimization</a>
+              service on Envato Studio. </strong>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="retina" class="content_element">
+            <h4 class="option_title">RETINA images SUPPORT</h4>
+            <p>Our theme support retina feature, to add retina support for all
+              images that you used in WordPress (posts, pages, etc) you need to
+              install and configure special retina plugins for WordPress. We
+              recommend to use one of this plugins:</p>
+            <ul>
+              <li><a href="https://wordpress.org/plugins/wp-retina-2x/" target="_blank">WP
+                  Retina 2x</a></li>
+              <li><a href="https://wordpress.org/plugins/simple-wp-retina/" target="_blank">Simple
+                  WP Retina</a></li>
+            </ul>
+            <p>You need to read this plugins documentation how to use this
+              plugins and how to configure plugins correctly.</p>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <div id="update" class="content_element">
+            <h4 id="support" class="option_title">Theme Updates</h4>
+            <p>You will see when theme update available on our website, our
+              social profiles and in email from Themeforest (if you subscribed
+              for theme updates notifications).</p>
+            <p><strong>How to update theme: </strong></p>
+            <p><a href="http://magniumthemes.com/go/theme-update-guide/" target="_blank">Read
+                this guide how to update theme</a></p>
+            <ul>
+              <li><strong>Do not update plugins bundled with theme yourself </strong>(even
+                WooCommerce), before we will not add this updated plugins to our
+                theme and tested it compatibility.</li>
+            </ul>
+          </div>
+          <div id="sources" class="content_element">
+            <h4 id="support" class="option_title">Support </h4>
+            <p>We offer theme support and updates for our items. </p>
+            <p>Use any of this options to subscribe to theme updates releases
+              notifications:</p>
+            <ul>
+              <li> Like <a href="http://facebook.com/magniumthemescompany" target="_blank">our
+                  page on Facebook</a></li>
+              <li>Plus <a href="http://google.com/+magniumthemescompany" target="_blank">our
+                  page on Google+</a></li>
+              <li>Follow us on <a href="https://twitter.com/magniumthemes" target="_blank">Twitter</a></li>
+            </ul>
+            <p><strong>If you have any questions about this theme you should:</strong></p>
+            <ol>
+              <li>Check WordPress section in our <a href="http://magniumthemes.com/faq/"
+                  target="_blank">FAQ
+                  page</a></li>
+              <li><strong>If you don't find answer</strong> <a href="http://support.magniumthemes.com/"
+                  target="_blank">submit
+                  support question</a> in our support system</li>
+              <li>If you need customization service or WP/Theme setup check our
+                <a href="http://magniumthemes.com/services/" target="_blank">customization
+                  services page</a>.</li>
+            </ol>
+            <div class="divider_top"><a style="float: right;" href="#main">Back
+                to top</a></div>
+          </div>
+          <!-- / content_element --> </div>
+        <div class="clear"></div>
+      </div>
+      <br />
+      <!-- /container_12 --> </div>
+  </body>
+</html>
